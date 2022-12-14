@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
@@ -11,7 +9,7 @@ export default function Home() {
         <meta name="description" content="GoodGreen.com - The Green for life" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+
       <div>
         <img src="/home.jpg" alt="Home image" />
       </div>
@@ -177,7 +175,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }
