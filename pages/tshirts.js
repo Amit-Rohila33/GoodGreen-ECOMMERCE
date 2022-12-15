@@ -7,9 +7,9 @@ const Tshirts = () => {
     <div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
+          <div className="flex flex-wrap justify-center -m-4">
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -30,7 +30,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -51,7 +51,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -72,7 +72,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -93,7 +93,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -114,7 +114,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -135,7 +135,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -156,7 +156,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -177,7 +177,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -198,7 +198,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -219,7 +219,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"
@@ -240,7 +240,7 @@ const Tshirts = () => {
               </div>
             </Link>
             <Link legacyBehavior href={"/product/messi-the-goat"}>
-              <div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl cursor-pointer">
+              <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-xl m-5 cursor-pointer">
                 <div className="block relative rounded overflow-hidden">
                   <img
                     alt="ecommerce"

@@ -23,7 +23,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   };
   const ref = useRef();
   return (
-    <div className="flex flex-col md:flex-row md:justify-start justify-center items-center my-2 md:shadow-gray md:shadow-xl">
+    <div className="flex flex-col md:flex-row md:justify-start justify-center items-center my-2 md:shadow-gray md:shadow-xl sticky bg-white top-0 z-30">
       <div className="logo mx-5 mb-2 md:mb-0">
         <Link href={"/"}>
           <Image width={200} height={60} src="/logo.png" alt="" />
@@ -53,7 +53,9 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       </div>
       <div
         ref={ref}
-        className="w-72 h-full sideCart absolute z-10 top-0 right-0 bg-pink-100 py-10 px-8 transition-transform translate-x-full transform"
+        className={`w-72 h-[100vh] sideCart absolute z-10 top-0 right-0 bg-white py-10 px-8 transition-transform ${
+          Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
+        } transform`}
       >
         <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
         <span
@@ -105,11 +107,14 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             );
           })}
         </ol>
+        <div className="font-bold my-2">Subtotal : ₹{subTotal}</div>
         <div className="flex">
-          <button className="flex text-white mx-1 bg-pink-600 border-0 py-2 px-4 focus:outline-none hover:bg-pink-400 rounded text-sm">
-            <BsFillBagCheckFill className="m-1" />
-            Checkout
-          </button>
+          <Link href={"/checkout"}>
+            <button className="flex text-white mx-1 bg-pink-600 border-0 py-2 px-4 focus:outline-none hover:bg-pink-400 rounded text-sm">
+              <BsFillBagCheckFill className="m-1" />
+              Checkout
+            </button>
+          </Link>
           <button
             onClick={clearCart}
             className="flex text-white mx-1 bg-pink-600 border-0 py-2 px-4 focus:outline-none hover:bg-pink-400 rounded text-sm"

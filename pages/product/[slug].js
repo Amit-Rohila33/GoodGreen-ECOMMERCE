@@ -205,6 +205,7 @@ const Slug = ({ addToCart }) => {
               </div>
               <div className="pin mt-6 flex space-x-2 text-sm">
                 <input
+                placeholder="Enter Pincode Here"
                   onChange={onChangePin}
                   className="px-2 border-2 border-gray-400 rounded-md"
                   type="text"
