@@ -1,8 +1,26 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Slug = () => {
   const router = useRouter();
   const { slug } = router.query;
+  const [pin, setPin] = useState();
+  const [service, setService] = useState();
+  const checkServicability = async () => {
+    let pins = await fetch("http://localhost:3000/api/pincode");
+    let pinJson = await pins.json();
+    // console.log(pinJson, pin);
+    if (pinJson.includes(parseInt(pin))) {
+      setService(true);
+    } else {
+      setService(false);
+    }
+    // console.log(service);
+  };
+
+  const onChangePin = (e) => {
+    setPin(e.target.value);
+  };
 
   return (
     <>
@@ -19,7 +37,7 @@ const Slug = () => {
                 BRAND NAME
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                The Catcher in the Rye
+                GoodGreen - The green for life
               </h1>
               <div className="flex mb-4">
                 <span className="flex items-center">
@@ -163,7 +181,10 @@ const Slug = () => {
                 <span className="title-font font-medium text-2xl text-gray-900">
                   $58.00
                 </span>
-                <button className="flex ml-14 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">
+                <button className="flex ml-8 text-sm md:text-md text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">
+                  Buy Now
+                </button>
+                <button className="flex ml-4 text-sm md:text-md text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">
                   Add to cart
                 </button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
@@ -179,6 +200,29 @@ const Slug = () => {
                   </svg>
                 </button>
               </div>
+              <div className="pin mt-6 flex space-x-2 text-sm">
+                <input
+                  onChange={onChangePin}
+                  className="px-2 border-2 border-gray-400 rounded-md"
+                  type="text"
+                />
+                <button
+                  onClick={checkServicability}
+                  className=" text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded"
+                >
+                  Check
+                </button>
+              </div>
+              {!service && service != null && (
+                <div className="text-red-700 text-sm mt-3">
+                  Sorry! We do not deliver to this pincode yet
+                </div>
+              )}
+              {service && service != null && (
+                <div className="text-green-700 text-sm mt-3">
+                  Yay! This pincode is serviceable
+                </div>
+              )}
             </div>
           </div>
         </div>
