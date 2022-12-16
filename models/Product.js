@@ -11,17 +11,9 @@ const ProductSchema = new mongoose.Schema(
     color: { type: String },
     price: { type: Number, required: true },
     avaiableQty: { type: Number, required: true },
-    products: [
-      {
-        productId: { type: String },
-        quantity: { type: Number, default: 1 },
-      },
-    ],
-    address: { type: String, required: true },
-    amount: { type: Number, required: true },
-    status: { type: String, default: "Pending", reuired: true },
   },
   { timestamps: true }
 );
 
+mongoose.models = {};
 export default mongoose.model("Product", ProductSchema);
