@@ -27,45 +27,45 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
     <div className="flex flex-col md:flex-row md:justify-start justify-center items-center my-2 md:shadow-gray md:shadow-xl sticky bg-white top-0 z-30">
       <div className="logo mx-5 mb-2 md:mb-0">
         <Link href={"/"}>
-          <Image width={200} height={60} src="/logo.png" alt="" />
+          <Image className="hover:text-pink-600" width={200} height={60} src="/logo.png" alt="" />
         </Link>
       </div>
       <div className="nav">
         <ul className="flex items-center space-x-4 font-bold text-sm md:text-md">
           <Link href={"/tshirts"}>
-            <li>TShirts</li>
+            <li className="hover:text-pink-600">TShirts</li>
           </Link>
           <Link href={"/hoodies"}>
-            <li>Hoodies</li>
+            <li className="hover:text-pink-600">Hoodies</li>
           </Link>
           <Link href={"/stickers"}>
-            <li>Stickers</li>
+            <li className="hover:text-pink-600">Stickers</li>
           </Link>
           <Link href={"/mugs"}>
-            <li>Mugs</li>
+            <li className="hover:text-pink-600">Mugs</li>
           </Link>
         </ul>
       </div>
-      <div className="cart absolute right-0 top-2 mx-5 text-xl md:2xl cursor-pointer flex">
+      <div className="cart absolute right-0 top-2 mx-5 text-xl md:2xl cursor-pointer flex ">
         <Link href={"/login"}>
-          <MdAccountCircle className="text-xl md:text-2xl mx-2" />
+          <MdAccountCircle className="text-xl md:text-2xl mx-2 hover:text-pink-600" />
         </Link>
 
         <AiOutlineShoppingCart
           onClick={toggleCart}
-          className="text-xl md:text-2xl"
+          className="text-xl md:text-2xl hover:text-pink-600"
         />
       </div>
       <div
         ref={ref}
-        className={`w-72 h-[100vh] sideCart absolute z-10 top-0 right-0 bg-white py-10 px-8 transition-transform ${
+        className={`w-72 h-[100vh] sideCart absolute z-10 top-0 right-0 bg-pink-300 py-10 px-8 transition-transform ${
           Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
         } transform`}
       >
         <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
         <span
           onClick={toggleCart}
-          className="absolute top-4 right-3 text-2xl text-pink-600 hover:text-pink-400 cursor-pointer"
+          className="absolute top-4 right-3 text-2xl text-pink-600 hover:text-pink-400 cursor "
         >
           <AiFillCloseCircle />
         </span>
@@ -77,7 +77,9 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             return (
               <li key={k}>
                 <div className="item flex my-5">
-                  <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                  <div className="w-2/3 font-semibold">
+                    {cart[k].name}({cart[k].size}/{cart[k].variant})
+                  </div>
                   <div className="w-1/3 flex items-center justify-center font-semibold text-lg">
                     <AiFillMinusCircle
                       onClick={() => {
