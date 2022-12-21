@@ -1,15 +1,21 @@
 // import { set } from "mongoose";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
 const Login = () => {
-  const router = useRouter();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      router.push("/");
+    }
+  });
 
   const handleChange = async (e) => {
     if (e.target.name == "email") {
