@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("Messi is the best");
+    // console.log("Messi is the best");
     try {
       if (localStorage.getItem("cart")) {
         setCart(JSON.parse(localStorage.getItem("cart")));
