@@ -1,9 +1,81 @@
-import React from "react";
+// import { set } from "mongoose";
 import Link from "next/link";
+import React from "react";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const Login = () => {
+  const router = useRouter();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleChange = async (e) => {
+    if (e.target.name == "email") {
+      setEmail(e.target.value);
+    } else if (e.target.name == "password") {
+      setPassword(e.target.value);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = { email, password };
+    let res = await fetch("http://localhost:3000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    let response = await res.json();
+    console.log(response);
+    setEmail("");
+    setPassword("");
+
+    if (response.success) {
+      toast.success("You are successfully logged in!!", {
+        position: "bottom-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(() => {
+        router.push("http://localhost:3000");
+      }, 2000);
+    } else {
+      toast.error(response.error, {
+        position: "bottom-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
   return (
     <div>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
@@ -16,7 +88,7 @@ const Login = () => {
               Login to your account
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
-              Or 
+              Or
               <Link
                 href={"/signup"}
                 className="font-medium text-pink-600 hover:text-pink-500"
@@ -25,15 +97,21 @@ const Login = () => {
               </Link>
             </p>
           </div>
-          <htmlForm className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            onSubmit={handleSubmit}
+            className="mt-8 space-y-6"
+            method="POST"
+          >
             <input type="hidden" name="remember" value="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
-                  id="email-address"
+                  onChange={handleChange}
+                  id="email"
+                  value={email}
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -47,7 +125,9 @@ const Login = () => {
                   Password
                 </label>
                 <input
+                  onChange={handleChange}
                   id="password"
+                  value={password}
                   name="password"
                   type="password"
                   autoComplete="current-password"
@@ -107,7 +187,7 @@ const Login = () => {
                 Login
               </button>
             </div>
-          </htmlForm>
+          </form>
         </div>
       </div>
     </div>
