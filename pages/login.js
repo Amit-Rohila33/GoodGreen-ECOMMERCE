@@ -36,6 +36,7 @@ const Login = () => {
     setPassword("");
 
     if (response.success) {
+      localStorage.setItem("token", response.token);
       toast.success("You are successfully logged in!!", {
         position: "bottom-left",
         autoClose: 2000,
