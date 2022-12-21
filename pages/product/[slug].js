@@ -2,20 +2,44 @@ import mongoose from "mongoose";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Product from "../../models/Product";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Slug = ({ addToCart, product, variants }) => {
+const Slug = ({ buyNow, addToCart, product, variants }) => {
   // console.log(product, variants);
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
   const [service, setService] = useState();
   const checkServicability = async () => {
+    // toast("Fetching your pincode!!");
     let pins = await fetch("http://localhost:3000/api/pincode");
     let pinJson = await pins.json();
     // console.log(pinJson, pin);
     if (pinJson.includes(parseInt(pin))) {
       setService(true);
+      toast.success('Your Pincode is serviceable', {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } else {
+
+      toast.error(' Sorry, Pincode not serviceable', {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       setService(false);
     }
     // console.log(service);
@@ -29,7 +53,7 @@ const Slug = ({ addToCart, product, variants }) => {
   const [size, setSize] = useState(product.size);
 
   const refreshVariant = (newsize, newcolor) => {
-    console.log(variants, newcolor, newsize);
+    // console.log(variants, newcolor, newsize);
 
     let url = `http://localhost:3000/product/${variants[newcolor][newsize]["slug"]}`;
     window.location = url;
@@ -37,6 +61,18 @@ const Slug = ({ addToCart, product, variants }) => {
 
   return (
     <>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-16 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -52,7 +88,7 @@ const Slug = ({ addToCart, product, variants }) => {
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
                 {product.title}({product.size}/{product.color})
               </h1>
-              
+
               <p className="leading-relaxed">{product.desc}</p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
@@ -172,18 +208,22 @@ const Slug = ({ addToCart, product, variants }) => {
                 <span className="title-font font-medium text-2xl text-gray-900">
                   $58.00
                 </span>
-                <button className="flex ml-8 text-sm md:text-md text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded">
+                <button
+                  onClick={() => {
+                    buyNow(slug, 1, 499, product.title, size, color);
+                  }}
+                  className="flex ml-8 text-sm md:text-md text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded"
+                >
                   Buy Now
                 </button>
                 <button
                   onClick={() => {
-                    addToCart(slug, 1, 499, product.title,size,color);
+                    addToCart(slug, 1, 499, product.title, size, color);
                   }}
                   className="flex ml-4 text-sm md:text-md text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded"
                 >
                   Add to cart
                 </button>
-                
               </div>
               <div className="pin mt-6 flex space-x-2 text-sm">
                 <input

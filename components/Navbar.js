@@ -58,14 +58,14 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       </div>
       <div
         ref={ref}
-        className={`w-72 h-[100vh] sideCart absolute z-10 top-0 right-0 bg-pink-300 py-10 px-8 transition-transform ${
+        className={`w-100 h-[100vh] sideCart absolute z-10 top-0 overflow-y-scroll right-0 bg-pink-100 py-10 px-8 transition-transform ${
           Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
         } transform`}
       >
         <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
         <span
           onClick={toggleCart}
-          className="absolute top-4 right-3 text-2xl text-pink-600 hover:text-pink-400 cursor "
+          className="absolute top-4 right-3 text-2xl text-pink-600 hover:text-pink-400 cursor-pointer "
         >
           <AiFillCloseCircle />
         </span>
