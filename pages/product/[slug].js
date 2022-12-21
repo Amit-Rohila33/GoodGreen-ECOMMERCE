@@ -18,7 +18,7 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
     // console.log(pinJson, pin);
     if (pinJson.includes(parseInt(pin))) {
       setService(true);
-      toast.success('Your Pincode is serviceable', {
+      toast.success("Your Pincode is serviceable", {
         position: "bottom-center",
         autoClose: 1000,
         hideProgressBar: false,
@@ -27,10 +27,9 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     } else {
-
-      toast.error(' Sorry, Pincode not serviceable', {
+      toast.error(" Sorry, Pincode not serviceable", {
         position: "bottom-center",
         autoClose: 1000,
         hideProgressBar: false,
@@ -39,7 +38,7 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
       setService(false);
     }
     // console.log(service);
@@ -206,11 +205,11 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
               </div>
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  $58.00
+                  ₹{product.price}
                 </span>
                 <button
                   onClick={() => {
-                    buyNow(slug, 1, 499, product.title, size, color);
+                    buyNow(slug, 1, product.price, product.title, size, color);
                   }}
                   className="flex ml-8 text-sm md:text-md text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded"
                 >
@@ -218,7 +217,14 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
                 </button>
                 <button
                   onClick={() => {
-                    addToCart(slug, 1, 499, product.title, size, color);
+                    addToCart(
+                      slug,
+                      1,
+                      product.price,
+                      product.title,
+                      size,
+                      color
+                    );
                   }}
                   className="flex ml-4 text-sm md:text-md text-white bg-pink-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-pink-600 rounded"
                 >
@@ -263,7 +269,10 @@ export async function getServerSideProps(context) {
   }
 
   let product = await Product.findOne({ slug: context.query.slug });
-  let variants = await Product.find({ title: product.title });
+  let variants = await Product.find({
+    title: product.title,
+    category: product.category,
+  });
 
   let colorSizeSlug = {};
   for (let item of variants) {
