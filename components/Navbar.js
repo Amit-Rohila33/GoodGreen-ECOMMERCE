@@ -73,6 +73,9 @@ const Navbar = ({
         >
           {dropDown && (
             <div
+              onClick={() => {
+                setDropDown(true);
+              }}
               onMouseOver={() => {
                 setDropDown(true);
               }}
