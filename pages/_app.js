@@ -42,6 +42,7 @@ function MyApp({ Component, pageProps }) {
     localStorage.removeItem("token");
     setUser({ value: null });
     setKey(Math.random());
+    router.push('/')
     toast.success("You are successfully logged out!!", {
       position: "bottom-left",
       autoClose: 2000,
