@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
     localStorage.removeItem("token");
     setUser({ value: null });
     setKey(Math.random());
-    router.push('/')
+    router.push("/");
     toast.success("You are successfully logged out!!", {
       position: "bottom-left",
       autoClose: 2000,
@@ -120,16 +120,18 @@ function MyApp({ Component, pageProps }) {
         waitingTime={800}
         onLoaderFinished={() => setProgress(0)}
       />
-      <Navbar
-        logout={logout}
-        user={user}
-        key={key}
-        cart={cart}
-        addToCart={addToCart}
-        removeFromCart={removeFromCart}
-        clearCart={clearCart}
-        subTotal={subTotal}
-      />
+      {key && (
+        <Navbar
+          logout={logout}
+          user={user}
+          key={key}
+          cart={cart}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          clearCart={clearCart}
+          subTotal={subTotal}
+        />
+      )}
       <Component
         buyNow={buyNow}
         cart={cart}
