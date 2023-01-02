@@ -9,8 +9,8 @@ const Slug = ({ buyNow, addToCart, product, variants }) => {
   // console.log(product, variants);
   const router = useRouter();
   const { slug } = router.query;
-  const [pin, setPin] = usestate('');
-  const [service, setService] = usestate('');
+  const [pin, setPin] = useState('');
+  const [service, setService] = useState('');
   const checkServicability = async () => {
     // toast("Fetching your pincode!!");
     let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);

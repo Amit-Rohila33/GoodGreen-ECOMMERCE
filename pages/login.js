@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
 const Login = () => {
-  const [email, setEmail] = usestate('');
-  const [password, setPassword] = usestate('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const router = useRouter();
 
   useEffect(() => {
